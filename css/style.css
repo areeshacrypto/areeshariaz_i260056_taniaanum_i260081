@@ -129,3 +129,8 @@ a { color: var(--primary); }
   .count b { font-size: 1.5rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+/* navbar and footer color */
+.bg-dark { background-color: #2b1b0e !important; }
+.navbar { border-bottom: 4px solid #f5b21b; }
+.navbar .nav-link { color: #f3e3bb; }
+.navbar .nav-link:hover, .navbar .nav-link.active { color: #f5b21b; }
