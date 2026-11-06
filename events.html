@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events | Campus Events Hub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- NAVBAR (same on every page) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="images/logo.svg" height="32" alt="logo"> Events Hub</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link " href="news.html">News</a></li>
+        <li class="nav-item"><a class="nav-link active" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link " href="clubs.html">Clubs</a></li>
+        <li class="nav-item"><a class="nav-link " href="resources.html">Resources</a></li>
+        <li class="nav-item"><a class="nav-link " href="contact.html">Contact</a></li>
+      </ul>
+      <button id="themeBtn" class="btn btn-outline-light btn-sm ms-lg-3">Dark mode</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container my-5">
+  <h1>Upcoming Events</h1>
+
+  <!-- FILTER BUTTONS: data-filter says which category each button shows -->
+  <div class="my-4">
+    <button class="btn btn-secondary filter" data-filter="all">All</button>
+    <button class="btn btn-primary filter" data-filter="academic">Academic</button>
+    <button class="btn btn-danger filter" data-filter="cultural">Cultural</button>
+    <button class="btn btn-success filter" data-filter="sports">Sports</button>
+    <button class="btn btn-warning filter" data-filter="career">Career</button>
+  </div>
+
+  <!-- EVENT CARDS: each column has data-category; the card class sets its color -->
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-4 event" data-category="academic"><div class="card cat-academic"><div class="card-body">
+      <h5>AI Symposium</h5><p>28 Nov 2026, 10:00 AM</p><p class="extra">Talks and demos by faculty and students.</p>
+      <button class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#eventModal" data-title="AI Symposium" data-date="28 Nov 2026, 10:00 AM" data-venue="Main Auditorium" data-info="Talks and demos by faculty and students.">Details</button>
+    </div></div></div>
+
+    <div class="col-md-6 col-lg-4 event" data-category="cultural"><div class="card cat-cultural"><div class="card-body">
+      <h5>Cultural Night</h5><p>12 Dec 2026, 6:00 PM</p><p class="extra">Music, dance and drama by students.</p>
+      <button class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#eventModal" data-title="Cultural Night" data-date="12 Dec 2026, 6:00 PM" data-venue="Open-Air Theatre" data-info="Music, dance and drama by students.">Details</button>
+    </div></div></div>
+
+    <div class="col-md-6 col-lg-4 event" data-category="sports"><div class="card cat-sports"><div class="card-body">
+      <h5>Cricket Cup</h5><p>5 Dec 2026, 9:00 AM</p><p class="extra">Eight departments compete for the trophy.</p>
+      <button class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#eventModal" data-title="Cricket Cup" data-date="5 Dec 2026, 9:00 AM" data-venue="University Ground" data-info="Eight departments compete for the trophy.">Details</button>
+    </div></div></div>
+
+    <div class="col-md-6 col-lg-4 event" data-category="career"><div class="card cat-career"><div class="card-body">
+      <h5>Career Fair</h5><p>18 Dec 2026, 10:00 AM</p><p class="extra">Meet recruiters from 40+ companies.</p>
+      <button class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#eventModal" data-title="Career Fair" data-date="18 Dec 2026, 10:00 AM" data-venue="Exhibition Hall" data-info="Meet recruiters from 40+ companies.">Details</button>
+    </div></div></div>
+
+    <div class="col-md-6 col-lg-4 event" data-category="academic"><div class="card cat-academic"><div class="card-body">
+      <h5>Poster Day</h5><p>9 Jan 2027, 11:00 AM</p><p class="extra">Students present research posters.</p>
+      <button class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#eventModal" data-title="Poster Day" data-date="9 Jan 2027, 11:00 AM" data-venue="Library Atrium" data-info="Students present research posters.">Details</button>
+    </div></div></div>
+
+    <div class="col-md-6 col-lg-4 event" data-category="sports"><div class="card cat-sports"><div class="card-body">
+      <h5>Futsal Championship</h5><p>23 Jan 2027, 3:00 PM</p><p class="extra">Knockout tournament, teams of five.</p>
+      <button class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#eventModal" data-title="Futsal Championship" data-date="23 Jan 2027, 3:00 PM" data-venue="Indoor Courts" data-info="Knockout tournament, teams of five.">Details</button>
+    </div></div></div>
+  </div>
+</div>
+
+<!-- MODAL: JavaScript fills this in with the clicked event's data -->
+<div class="modal fade" id="eventModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title" id="mTitle"></h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body"><p id="mDate"></p><p id="mVenue"></p><p id="mInfo"></p></div>
+  </div></div>
+</div>
+
+<!-- FOOTER (same on every page) -->
+<footer class="bg-dark text-light text-center py-4 mt-5">
+  <p class="mb-1">Campus Events Hub | events@university.edu.pk</p>
+  <small>&copy; 2026 CL-1000 IICT Project</small>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
