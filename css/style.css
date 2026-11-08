@@ -142,9 +142,3 @@ a { color: var(--primary); }
 .navbar { border-bottom: 4px solid #f5b21b; }
 .navbar .nav-link { color: #f3e3bb; }
 .navbar .nav-link:hover, .navbar .nav-link.active { color: #f5b21b; }
-.hero-sub {
-    font-weight: 400; /* Sets it to regular, unbolded text */
-}
-.hero .lead {
-    font-weight: 300;
-}
