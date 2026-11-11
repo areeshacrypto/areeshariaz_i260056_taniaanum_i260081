@@ -206,14 +206,26 @@ html {
 
 /* Theme Variances */
 .technical {
-  border: 2px dashed #a8b67f;
-  background: rgba(168, 182, 127, 0.1);
+  border: 2px dashed #6d8134;
+  background: rgba(110, 73, 94, 0.056);
 }
 .technical h2 {
-  color: #55603a;
-  background: rgba(168, 182, 127, 0.28);
+  color: #ba0f0f6b;
+  background: rgba(243, 188, 198, 0.451);
 }
-.technical h2::before { content: "💻 "; }
+.technical h2::before {
+  content: "";
+  display: inline-block;
+  width: 24px;                  /* Fixed width */
+  height: 24px;                 /* Fixed height */
+  background-image: url("../images/laptop2.png"); /* Check your image file path */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;               /* Prevents the image from squishing */
+  margin-right: 6px;
+  filter: drop-shadow(0px 2px 3px rgba(51, 16, 23, 0.35));
+}
 
 .arts {
   border: 2px dashed #f4a3ad;
@@ -223,7 +235,19 @@ html {
   color: #b5566a;
   background: rgba(244, 163, 173, 0.3);
 }
-.arts h2::before { content: "🎨 "; }
+.arts h2::before {
+  content: "";
+  display: inline-block;
+  width: 26px;                  /* Fixed width */
+  height: 26px;                 /* Fixed height */
+  background-image: url("../images/art.png"); /* Check your image file path */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;               /* Prevents the image from squishing */
+  margin-right: 6px;
+  filter: drop-shadow(0px 2px 3px rgba(51, 16, 23, 0.35));
+}
 
 .sports {
   border: 2px dashed #e98a96;
@@ -233,7 +257,20 @@ html {
   color: #a8445a;
   background: rgba(233, 138, 150, 0.28);
 }
-.sports h2::before { content: "⚽ "; }
+/* using my custom local image before the sports section header*/
+.sports h2::before {
+  content: "";
+  display: inline-block;
+  width: 24px;                  /* Fixed width */
+  height: 24px;                 /* Fixed height */
+  background-image: url("../images/football.png"); /* Check your image file path */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;               /* Prevents the image from squishing */
+  margin-right: 6px;
+  filter: drop-shadow(0px 1px 2px rgba(142, 43, 62, 0.35));
+}
 
 .welfare {
   border: 2px dashed #e8d48c;
@@ -243,7 +280,7 @@ html {
   color: #7a6a1f;
   background: rgba(246, 231, 184, 0.9);
 }
-.welfare h2::before { content: "💛 "; }
+.welfare h2::before { content: " "; }
 
 /* Cute Individual Club Cards */
 .club {
