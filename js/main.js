@@ -1,5 +1,5 @@
-// ===== 1. DARK / LIGHT MODE =====
-// Bootstrap 5.3 changes all its colors when <html data-bs-theme="dark">.
+// dark and light mode
+// Bootstrap changes all its colors when the theme is switched to dark
 const html = document.documentElement;
 const themeBtn = document.getElementById("themeBtn");
 
@@ -13,12 +13,12 @@ themeBtn.addEventListener("click", function () {
   themeBtn.textContent = newTheme === "dark" ? "Light mode" : "Dark mode";
 });
 
-// ===== 2. COUNTDOWN (only runs on the Welcome page) =====
+//countdown for welcome page
 if (document.getElementById("days")) {
   const target = new Date("2026-12-12T18:00:00");
 
   function updateCountdown() {
-    let diff = target - new Date();          // milliseconds left
+    let diff = target - new Date();          // milliseconds that areleft
     if (diff < 0) diff = 0;
     document.getElementById("days").textContent  = Math.floor(diff / (1000 * 60 * 60 * 24));
     document.getElementById("hours").textContent = Math.floor(diff / (1000 * 60 * 60)) % 24;
@@ -29,7 +29,7 @@ if (document.getElementById("days")) {
   setInterval(updateCountdown, 1000);        // run again every second
 }
 
-// ===== 3. EVENT FILTER BUTTONS (Events page) =====
+// filter buttons for event page
 const filterButtons = document.querySelectorAll(".filter");
 filterButtons.forEach(function (button) {
   button.addEventListener("click", function () {
@@ -44,8 +44,7 @@ filterButtons.forEach(function (button) {
   });
 });
 
-// ===== 4. EVENT MODAL (Events page) =====
-// When the modal opens, copy the clicked button's data-* values into it.
+
 const modal = document.getElementById("eventModal");
 if (modal) {
   modal.addEventListener("show.bs.modal", function (e) {
@@ -57,7 +56,7 @@ if (modal) {
   });
 }
 
-// ===== 5. CONTACT FORM VALIDATION (Contact page) =====
+//contact form validation
 const form = document.getElementById("form");
 if (form) {
   form.addEventListener("submit", function (e) {

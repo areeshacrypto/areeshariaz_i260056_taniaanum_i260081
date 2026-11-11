@@ -1,6 +1,6 @@
-// ===== EVENTS PAGE SCRIPT (used only by events.html) =====
 
-// ===== 1. EVENT FILTER BUTTONS (Events page) =====
+
+//event filter buttons
 const filterButtons = document.querySelectorAll(".filter");
 filterButtons.forEach(function (button) {
   button.addEventListener("click", function () {
@@ -15,12 +15,11 @@ filterButtons.forEach(function (button) {
   });
 });
 
-// ===== 2. EVENT MODAL (Events page) =====
-// When the modal opens, copy the clicked button's data-* values into it.
+// events page and modal
 const modal = document.getElementById("eventModal");
 if (modal) {
   modal.addEventListener("show.bs.modal", function (e) {
-    const button = e.relatedTarget;          // the button that was clicked
+    const button = e.relatedTarget;          // the button that was clicked will become the target
     document.getElementById("mTitle").textContent = button.dataset.title;
     document.getElementById("mDate").textContent  = "Date: " + button.dataset.date;
     document.getElementById("mVenue").textContent = "Venue: " + button.dataset.venue;
