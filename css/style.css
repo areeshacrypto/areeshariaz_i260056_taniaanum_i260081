@@ -341,3 +341,4 @@ html {
   40%  { opacity: 1; transform: translate(calc(-50% + var(--dx) * .5), calc(-50% + var(--dy) * .5)) scale(1) rotate(90deg); }
   100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(.2) rotate(200deg); }
 }
+
