@@ -73,8 +73,7 @@ a { color: var(--primary); }
 }
 
 /* ===== 6. HERO + PAGE BANNERS (blush-to-rose gradient) ===== */
-.hero, .page-banner { position: relative; overflow: hidden; color: var(--hero-text);
-  background: linear-gradient(135deg, var(--hero-from), var(--hero-to)); }
+.hero, .page-banner { position: relative; overflow: hidden; color: var(--hero-text); }
 .hero { padding: 90px 0 110px; border-radius: 0 0 50px 50px; }
 .page-banner { padding: 56px 0 64px; border-radius: 0 0 40px 40px; }
 .hero .container, .page-banner .container { position: relative; z-index: 1; }
@@ -90,12 +89,9 @@ a { color: var(--primary); }
 .count div { background: var(--tile); border-radius: 14px; padding: 12px 4px; }
 .count b { display: block;font: 800 2rem 'Montserrat', sans-serif; color: var(--tile-num); }
 
-.hero {background-image:
-  linear-gradient(135deg, rgba(249, 195, 203, 0.75), rgba(240, 108, 120, 0.75)),
-  url('bg.png'); /* Replace with your image file/URL */
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+/* hero background: the image only (no gradient or solid color) */
+.hero {
+  background: url('../images/bg.png') center / cover no-repeat;   /* css/ folder -> ../images/ */
 }
 
 /* ===== 7. CARDS ===== */
