@@ -507,3 +507,10 @@ footer.bg-dark {
   color: var(--primary);
   font-weight: 700;
 }
+
+
+/* Cute Stitched Navbar Bottom Border */
+.navbar {
+  border-bottom: 5px dashed var(--accent) !important;
+  border-radius: 0 0 24px 24px; /* optional: adds soft rounded bottom corners to mirror your footer */
+}
