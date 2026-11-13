@@ -420,6 +420,8 @@ footer.bg-dark {
 
 /* 1. Make the yellow logo pop on the cream navbar */
 .navbar-brand img {
+  height: 80px;      /* Change this number to resize your logo */
+  width: auto;
   filter: drop-shadow(0 2px 3px rgba(61, 31, 36, 0.35));
 }
 
