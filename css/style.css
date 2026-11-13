@@ -345,7 +345,7 @@ html {
   margin-left: 8px;
 }
 
-/* ===== CURSOR SPARKLES (created by js/sparkles.js) ===== */
+/*custom sparkle effect*/
 .sparkle { position: fixed; z-index: 9999; pointer-events: none; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
   animation: sparkle 0.9s ease-out forwards; }
 @keyframes sparkle {

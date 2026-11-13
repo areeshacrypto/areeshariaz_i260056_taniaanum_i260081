@@ -3,22 +3,26 @@
 const html = document.documentElement;
 const themeBtn = document.getElementById("themeBtn");
 
-html.setAttribute("data-bs-theme", localStorage.getItem("theme") || "light");  // remember choice
-themeBtn.textContent = html.getAttribute("data-bs-theme") === "dark" ? "Light mode" : "Dark mode";
+const savedTheme = localStorage.getItem("theme") || "light";
+html.setAttribute("data-bs-theme", savedTheme);
 
-themeBtn.addEventListener("click", function () {
-  const newTheme = html.getAttribute("data-bs-theme") === "dark" ? "light" : "dark";
-  html.setAttribute("data-bs-theme", newTheme);
-  localStorage.setItem("theme", newTheme);
-  themeBtn.textContent = newTheme === "dark" ? "Light mode" : "Dark mode";
-});
+if (themeBtn) {
+  themeBtn.textContent = savedTheme === "dark" ? "Light mode" : "Dark mode";
 
-//countdown for welcome page
+  themeBtn.addEventListener("click", function () {
+    const newTheme = html.getAttribute("data-bs-theme") === "dark" ? "light" : "dark";
+    html.setAttribute("data-bs-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    themeBtn.textContent = newTheme === "dark" ? "Light mode" : "Dark mode";
+  });
+}
+
+// countdown for welcome page
 if (document.getElementById("days")) {
   const target = new Date("2026-12-12T18:00:00");
 
   function updateCountdown() {
-    let diff = target - new Date();          // milliseconds that areleft
+    let diff = target - new Date(); // milliseconds that are left
     if (diff < 0) diff = 0;
     document.getElementById("days").textContent  = Math.floor(diff / (1000 * 60 * 60 * 24));
     document.getElementById("hours").textContent = Math.floor(diff / (1000 * 60 * 60)) % 24;
@@ -26,29 +30,29 @@ if (document.getElementById("days")) {
     document.getElementById("secs").textContent  = Math.floor(diff / 1000) % 60;
   }
   updateCountdown();
-  setInterval(updateCountdown, 1000);        // run again every second
+  setInterval(updateCountdown, 1000); // run again every second
 }
 
 // filter buttons for event page
 const filterButtons = document.querySelectorAll(".filter");
 filterButtons.forEach(function (button) {
   button.addEventListener("click", function () {
-    const chosen = button.dataset.filter;    // "all", "academic", ...
+    const chosen = button.dataset.filter; // "all", "academic", ...
     document.querySelectorAll(".event").forEach(function (event) {
       if (chosen === "all" || event.dataset.category === chosen) {
-        event.style.display = "";            // show
+        event.style.display = ""; // show
       } else {
-        event.style.display = "none";        // hide
+        event.style.display = "none"; // hide
       }
     });
   });
 });
 
-
+// event details modal
 const modal = document.getElementById("eventModal");
 if (modal) {
   modal.addEventListener("show.bs.modal", function (e) {
-    const button = e.relatedTarget;          // the button that was clicked
+    const button = e.relatedTarget; // the button that was clicked
     document.getElementById("mTitle").textContent = button.dataset.title;
     document.getElementById("mDate").textContent  = "Date: " + button.dataset.date;
     document.getElementById("mVenue").textContent = "Venue: " + button.dataset.venue;
@@ -56,11 +60,11 @@ if (modal) {
   });
 }
 
-//contact form validation
+// contact form validation
 const form = document.getElementById("form");
 if (form) {
   form.addEventListener("submit", function (e) {
-    e.preventDefault();                      // stop the page from reloading
+    e.preventDefault(); // stop the page from reloading
     let ok = true;
 
     const name = document.getElementById("name");
@@ -68,11 +72,11 @@ if (form) {
     const date = document.getElementById("eventDate");
     const message = document.getElementById("message");
     const errors = document.querySelectorAll(".error");
-    errors.forEach(function (x) { x.textContent = ""; });   // clear old errors
+    errors.forEach(function (x) { x.textContent = ""; }); // clear old errors
 
     if (name.value.trim() === "") { errors[0].textContent = "Please enter your name."; ok = false; }
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;       // something@something.something
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // something@something.something
     if (!emailPattern.test(email.value.trim())) { errors[1].textContent = "Please enter a valid email."; ok = false; }
 
     if (date.value === "" || new Date(date.value) <= new Date()) { errors[2].textContent = "Please pick a future date."; ok = false; }
@@ -80,7 +84,7 @@ if (form) {
     if (message.value.trim() === "") { errors[3].textContent = "Please write a message."; ok = false; }
 
     if (ok) {
-      document.getElementById("success").classList.remove("d-none");   // show success message
+      document.getElementById("success").classList.remove("d-none"); // show success message
       form.reset();
     }
   });
