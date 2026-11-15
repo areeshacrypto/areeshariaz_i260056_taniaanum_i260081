@@ -2,8 +2,8 @@
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  var light = ["#f4a3ad", "#e98a96", "#a8b67f", "#f7c8ce", "#e8d48c"];   // visible on cream
-  var dark  = ["#f9c3cb", "#fff1d0", "#f4a3ad", "#ffffff", "#c9d3a2"];   // visible on dark
+  var light = ["#B46C72", "#F7C8D3", "#A8B58A", "#A8B7C6", "#F7C8D3"];   // palette colours, visible on cream
+  var dark  = ["#F7C8D3", "#FFF7E6", "#A8B58A", "#A8B7C6", "#FFF7E6"];   // palette colours, visible on dark
   var last = 0;
 
   function spawn(x, y) {
