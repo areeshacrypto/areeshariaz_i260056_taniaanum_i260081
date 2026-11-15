@@ -6,20 +6,38 @@
 
 // ===== 1. DARK / LIGHT MODE =====
 // Bootstrap changes all its colours when data-bs-theme on <html> is "dark".
+// ===== 1. DARK / LIGHT MODE (remembered across pages) =====
 const html = document.documentElement;
 const themeBtn = document.getElementById("themeBtn");
 
-const savedTheme = localStorage.getItem("theme") || "light";   // remembered between pages/visits
-html.setAttribute("data-bs-theme", savedTheme);
+// which theme now? 1) ?theme= in the address  2) saved choice  3) light
+function getTheme() {
+  const fromUrl = new URLSearchParams(location.search).get("theme");
+  if (fromUrl === "dark" || fromUrl === "light") return fromUrl;
+  try { return localStorage.getItem("theme") || "light"; } catch (e) { return "light"; }
+}
+
+// put ?theme=dark (or light) on every link that goes to another page of our site
+function carryTheme(mode) {
+  document.querySelectorAll('a[href*=".html"]').forEach(function (a) {
+    const href = a.getAttribute("href");
+    if (/^https?:|^mailto:/.test(href)) return;                 // skip links to other websites
+    a.setAttribute("href", href.split("?")[0] + "?theme=" + mode);
+  });
+}
+
+function applyTheme(mode) {
+  html.setAttribute("data-bs-theme", mode);                     // change the colours
+  try { localStorage.setItem("theme", mode); } catch (e) {}     // remember it
+  carryTheme(mode);                                             // update the links
+  if (themeBtn) themeBtn.textContent = mode === "dark" ? "Light mode" : "Dark mode";
+}
+
+applyTheme(getTheme());                                         // run once when the page loads
 
 if (themeBtn) {
-  themeBtn.textContent = savedTheme === "dark" ? "Light mode" : "Dark mode";
-
   themeBtn.addEventListener("click", function () {
-    const newTheme = html.getAttribute("data-bs-theme") === "dark" ? "light" : "dark";
-    html.setAttribute("data-bs-theme", newTheme);
-    localStorage.setItem("theme", newTheme);                    // save choice
-    themeBtn.textContent = newTheme === "dark" ? "Light mode" : "Dark mode";
+    applyTheme(html.getAttribute("data-bs-theme") === "dark" ? "light" : "dark");
   });
 }
 
